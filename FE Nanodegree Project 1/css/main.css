@@ -15,18 +15,22 @@ body{
 .col-4{
   width: 33.3%;
 }
+.col-6{
+  width: 50%;
+}
 .col-10{
   width: 83.4%;
 }
 .col-12{
 	width: 100%;
 }
-.big-pic{
-  width: 100%;
-}
 .small-pic{
-  width: 30%;
-  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  margin:10px;
+}
+img:last-to-type{
+  margin: 0;
 }
 
 hr {
@@ -36,4 +40,16 @@ hr {
     border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0; 
+}
+@media screen and (min-width: 1000px){
+  .container{
+    width: 80%;
+  }
+  .row{
+    width: 50%;
+  }
+  .col-4{
+    width:50%;
+  }
+
 }
