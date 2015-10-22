@@ -4,32 +4,41 @@ body{
 p{
   text-align: center;
   color: #747704;
+  margin: 0 auto;
 }
+a:link {
+    text-decoration: none;
+}
+
 .container{
 	width: 100%;
+  margin: auto;
 }
 .row{
- width: 100%;
- display: -webkit-flex; /* Safari */
-    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-    display: flex;
-    flex-wrap: wrap;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;
+  flex-wrap: wrap;
 }
-.col-4{
+.row .col-4{
   width: 33.3%;
+  margin-right: 0px;
+  margin-top: 20px;
 }
+
 .col-6{
   width: 50%;
 }
-.small-pic{
-  width: 60vw;
-  height:60vw;
+.logo{
+  width: 100px;
+  height: 100px;
+}
+img{
+  width: 95%;
+  height: 80%;
   max-width: 333px;
   max-height: 333px;
-  padding-right:10px;
-}
-.small-pic:last-to-type{
-  margin: 0;
 }
 hr {
     display: block;
@@ -40,6 +49,22 @@ hr {
     padding: 0; 
 }
 @media only screen and (max-width: 600px){
+  .col-4{
+    width: 100%;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .col-4 p{
+    width: 100%;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width:999px){
   .col-4{
     width: 50%;
     display: -webkit-flex; /* Safari */
@@ -57,8 +82,5 @@ hr {
   }
   hr{
     max-width: 1000px;
-    margin: auto;
-    margin-bottom: 30px;
-    size: 10px;
   }
 }
