@@ -7,9 +7,9 @@ h1, h3 {
 }
 
 h2 {
-  font-weight: 400;f
-  ont-size:40px;
-  color:#BCBBBB
+  font-weight: 400;
+  font-size: 40px;
+  color: #bcbbbb;
 }
 
 .logo {
@@ -24,8 +24,8 @@ h2 {
 
 hr  {
     display: block;
-    size:"4";
-    color:gray;
+    size: "4";
+    color: gray;
     height: 1px;
     border: 0;
     border-top: 2px solid #BCBBBB;
@@ -44,8 +44,8 @@ hr.soften  {
 
 /* Section */
 .entrance {
-  width:100%;
-  max-width:1000px
+  width: 100%;
+  max-width: 1000px
 }
 
 #feature {
@@ -54,8 +54,8 @@ hr.soften  {
 }
 
 .modal  {
-  width:70%;
-  height:70%;
+  width: 70%;
+  height: 70%;
   text-align: center;
 }
 
@@ -71,21 +71,19 @@ p a {
   text-align: center;
   color: #747704;
   margin: 0 auto;
-  font-size:40px;
-  font-weight:400;
+  font-size: 40px;
+  font-weight: 400;
   text-transform: uppercase;
 }
 
 a {
-  font-size:15px; 
-  font-weight:100;
+  font-size: 15px; 
+  font-weight: 100;
 }
 
 a:link  {
     text-decoration: none;
 }
-
-
 
 @media only screen and (max-width: 522px) {
   .col-sm-4 {
@@ -103,9 +101,10 @@ a:link  {
     display: flex;
     flex-wrap: wrap;
   }
+
 }
 
-@media only screen and (min-width: 523px) and (max-width:780px) {
+@media only screen and (min-width: 523px) and (max-width: 780px) {
   .col-sm-4 {
     width: 50%;
     display: -webkit-flex; /* Safari */
