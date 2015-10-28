@@ -1,0 +1,21 @@
+{
+    "bio": {
+        "name": "JennyZhang",
+        "role": "Researcher",
+        "contacts": {
+            "mobile": "1-206-667-0000",
+            "email": "canaantt@hotmail.com",
+            "github": "github/canaantt",
+            "location": "Seattle, WA",
+            "welcomeMessage": "Thankyouforviewingmyresume.",
+            "skills": {
+                "Web Develop": [
+                    "Javascript",
+                    "CSS",
+                    "testing"
+                ]
+            },
+            "biopic": "https: //scontent.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/10731215_1510078312610089_8578204886617491908_n.jpg?oh=48b1a425556adbde65a39bd0df42843a&oe=56BD779E"
+        }
+    }
+}
