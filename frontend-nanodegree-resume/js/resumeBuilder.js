@@ -9,12 +9,11 @@ var bio = {
 		            "mobile": "1-206-667-0000",
 		            "email": "canaantt@hotmail.com",
 		            "github": "github/canaantt",
-		            "twitter": "twitter/canaantt",
 		            "location": "Seattle, WA",
 		            "welcomeMessage": "Thank you for viewing my resume!",  
 		            },
 		         "biopic": "images/fry.jpg",
-		         "skills": ["Javascript", "CSS", "testing"]
+		         "skills": ["Javascript", "CSS", "testing","Tissue Banking","Tissue Processing","Molecular Profiling"]
 		        };
 
 bio.display = function(){
@@ -27,12 +26,11 @@ bio.display = function(){
 	formattedHTMLlocation  = HTMLlocation.replace("%data%",bio.contacts.location);
 	formattedHTMLbioPic = HTMLbioPic.replace("%data%",bio.biopic);
 	formattedHTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.contacts.welcomeMessage);
-	formattedHTMLtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 
 	$("#header").prepend(formattedHTMLheaderRole).prepend(formattedHTMLheaderName);
 	$("#header").append(formattedHTMLbioPic).append(formattedHTMLwelcomeMsg).append(HTMLskillsStart);
 	$("#topContacts").append(formattedHTMLemail).append(formattedHTMLmobile).append(formattedHTMLgithub).
-					  append(formattedHTMLlocation).append(formattedHTMLtwitter);
+					  append(formattedHTMLlocation);
 	bio.skills.forEach(function(skill){
 		formattedHTMLskills = HTMLskills.replace("%data%", skill);
 		$("#skills-h3").append(formattedHTMLskills);
@@ -92,13 +90,15 @@ var projects = {
 				"projects":[
 				{"title": "Solid Tumor Precision Medicine",
 				 "dates": "Since May 2013 to Present",
-				 "descrption": "Working on Solid Tumor Translational Research",
-				 "images":["http://research.fhcrc.org/content/stripe/holland/en/members/jennyzhang/_jcr_content/par/image/image.img.jpg/1431537596391.jpg"
-				 		  ,"http://oncoscape.sttrcancer.org/oncoscape/images/oncoscape_logo_TM.png"]},
+				 "descrption": "Participate in Cancer Translational Research Computational Web Application Development",
+				 "images":["https://github.com/canaantt/front-end-Projects/blob/master/frontend-nanodegree-resume/images/fh_1.png?raw=true"]
+				},
 				{"title": "Glioma Study",
 				 "dates": "May 2011 to April 2013",
-				 "descrption": "Working on Brain Tumor (GBM) Translational Research",
-				 "images":["https://www.mskcc.org/sites/default/files/styles/large/public/node/5070/group_image/huse-lab.jpg"]
+				 "descrption": "Molecular Profiling in Brain Tumor (GBM) Translational Research",
+				 "images":["https://github.com/canaantt/front-end-Projects/blob/master/frontend-nanodegree-resume/images/MSK_1.jpg?raw=true"
+				 		   ,"https://github.com/canaantt/front-end-Projects/blob/master/frontend-nanodegree-resume/images/MSK_3.jpg?raw=true"
+				 		  ,"https://github.com/canaantt/front-end-Projects/blob/master/frontend-nanodegree-resume/images/MSK_4.jpg?raw=true"]
 				 }		
 				]
 }
