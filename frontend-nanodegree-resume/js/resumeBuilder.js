@@ -76,9 +76,8 @@ work.display = function(){
 		formattedHTMlworkDates = HTMLworkDates.replace("%data%",job.dates);
 		formattedHTMLworkLocation = HTMLworkLocation.replace("%data%", job.location);
 		formattedHTMLworkDescription = HTMLworkDescription.replace("%data%", job.descrption);
-		$("#workExperience").append(HTMLworkStart)
-							.append(formattedHTMLworkEmployer)
-							.append(formattedHTMLworkTitle)
+		$("#workExperience").append(HTMLworkStart);
+		$(".work-entry:last").append(formattedHTMLworkEmployer + formattedHTMLworkTitle)
 							.append(formattedHTMlworkDates)
 							.append(formattedHTMLworkLocation)
 							.append(formattedHTMLworkDescription);
@@ -108,19 +107,78 @@ projects.display = function(){
 		formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", project.dates);
 		formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", project.descrption);
 		
-	$("#projects").append(HTMLprojectStart)
-				  .append(formattedHTMLprojectTitle)
-				  .append(formattedHTMLprojectDates)
-				  .append(formattedHTMLprojectDescription);
-   project.images.forEach(function(image){
-   		formattedHTMlprojectImage = HTMLprojectImage.replace("%data%", image);
-   		$("#projects").append(formattedHTMlprojectImage);
-   });
+		$("#projects").append(HTMLprojectStart);
+		$(".project-entry:last").append(formattedHTMLprojectTitle)
+					       .append(formattedHTMLprojectDates)
+					  	   .append(formattedHTMLprojectDescription);
+	    project.images.forEach(function(image){
+	   		formattedHTMlprojectImage = HTMLprojectImage.replace("%data%", image);
+	   		$(".project-entry:last").append(formattedHTMlprojectImage);
+	    });
 
 				  	
 	});
 }
 projects.display();
 //fill Education
-//Fill the Geo
+var education = {
+				 "schools":[
+				 {"name": "Florida Atlantic University",
+				  "location": "Boca Raton, FL, USA",
+				  "degree": "Master of Science",
+				  "majors": "Biomedical Science",
+				  "dates": "12/2007",
+				  "url": "http://www.fau.edu/"
+				 },
+				 {"name": "Shandong University",
+				  "location": "Jinan, Shandong, China",
+				  "degree": "Bachelor of Science",
+				  "majors": "Biochemistry",
+				  "dates": "6/2003",
+				  "url": "http://en.sdu.edu.cn/"
+				 }
+				 ],
+				 "onlineCourses":[
+				 {"title": "Frontend Nanodegree Program",
+				  "school": "Udacity",
+				  "degree": "pending",
+				  "majors": "Froned End Development",
+				  "dates": "0",
+				  "url": "http://www.udacity.com"
+				 }
+				 ]
+}
+education.display = function(){
+	education.schools.forEach(function(school){
+		formattedHTMLschoolName = HTMLschoolName.replace("%data%", school.name);
+		formattedHTMLschoolName = formattedHTMLschoolName.replace("#", school.url);
+		formattedHTMlschoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
+		formattedHTMLschoolDates = HTMLschoolDates.replace("%data%", school.dates);
+		formattedHTMlschoolLocation = HTMLschoolLocation.replace("%data%", school.location);
+		formattedHTMLschoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(formattedHTMLschoolName + formattedHTMlschoolDegree)
+								  .append(formattedHTMlschoolLocation)
+								  .append(formattedHTMLschoolDates)
+								  .append(formattedHTMLschoolMajor);
+	});
+	$("#education").append(HTMLonlineClasses);
+    education.onlineCourses.forEach(function(course){
+    	formattedHTMLonlineTitle = HTMLonlineTitle.replace("%data%", course.title);
+    	formattedHTMLonlineSchool = HTMLonlineSchool.replace("%data%", course.school);
+    	formattedHTMLonlineDate = HTMLonlineDates.replace("%data%", course.dates);
+    	formattedHTMLonlineURL = HTMLonlineURL.replace("%data%", course.url);
+    	formattedHTMLonlineURL = formattedHTMLonlineURL.replace("#", course.url);
+    	$("#education").append(HTMLschoolStart);
+    	$(".education-entry:last").append(formattedHTMLonlineTitle + formattedHTMLonlineSchool)
+    	                          .append(formattedHTMLonlineDate)
+    	                          .append(formattedHTMLonlineURL)
+    	                          
+    });
 
+
+}
+education.display();
+
+//Fill the Geo
+$("#mapDiv").append("googleMap");
