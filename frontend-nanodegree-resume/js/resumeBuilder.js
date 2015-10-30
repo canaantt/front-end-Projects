@@ -181,4 +181,4 @@ education.display = function(){
 education.display();
 
 //Fill the Geo
-$("#mapDiv").append("googleMap");
+$("#mapDiv").append(googleMap);
