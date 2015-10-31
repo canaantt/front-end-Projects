@@ -1,8 +1,10 @@
 /*
 
-This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
+This file contains all of the code running in the background that makes resumeBuilder.js possible. 
+We call these helper functions because they support your code in this course.
 
-Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
+Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes 
+to it until you start experimenting with inserting a Google Map in Problem Set 3.
 
 Cameron Pittman
 */
@@ -60,7 +62,8 @@ var googleMap = '<div id="map"></div>';
 
 
 /*
-The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
+The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. 
+Don't delete! It hooks up your code to the button you'll be appending.
 */
 $(document).ready(function() {
 });
@@ -70,6 +73,7 @@ The next few lines about clicks are for the Collecting Click Locations quiz in L
 */
 clickLocations = [];
 
+
 function logClicks(x,y) {
   clickLocations.push(
     {
@@ -78,10 +82,14 @@ function logClicks(x,y) {
     }
   );
   console.log('x location: ' + x + '; y location: ' + y);
-}
+};
 
 $(document).click(function(loc) {
-    logClicks(loc.lat, loc.lng);
+    google.maps.event.addListener(map, "click", function(event) {
+      loc.lat = event.latLng.lat();
+      loc.lng = event.latLng.lng();
+      logClicks(loc.lat, loc.lng);
+    });
 });
 
 
@@ -110,7 +118,10 @@ function initializeMap() {
   appended to #mapDiv in resumeBuilder.js. 
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
+ 
+ /* 
+ report the location while clicking
+ */
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -156,7 +167,9 @@ function initializeMap() {
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
-      title: name
+      title: name,
+      draggable: true,
+      icon: "http://www.google.com/mapfiles/marker_green.png"
     });
 
     // infoWindows are the little helper windows that open when you click
@@ -167,7 +180,9 @@ function initializeMap() {
     });
 
     // hmmmm, I wonder what this is about...
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function(event) {
+      infoWindow.open(map, marker);
+      logClicks(lat, lon);
       pinPoster(marker.position);
     });
 
