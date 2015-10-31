@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Portfolio Site</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato:400,100,300,900" rel="stylesheet">
+      <link href="css/main.css" rel="stylesheet">
+      <!--hr.soften is from: http://codepen.io/rvinay88/pen/Hweau-->
+   </head>
+   <body>
+      <main class="container-fluid">
+         <header>
+            <div class="row">
+               <img class="navbar-header logo" src="images/udacity-logo.jpg" alt="Udacity Logo">
+               <div id="name" class="nav navbar-right">
+                  <h1>Jenny Zhang</h1>
+                  <h3>Seattle, WA</h3>
+               </div>
+            </div>
+            <div class="row">
+               <hr class="soften">
+            </div>
+         </header>
+         <section class="row">
+            <img class="entrance" src="images/img-0.png" alt="entrance pic">
+         </section>
+         <article class="container-fluid">
+            <div class="row">
+               <h2 id="feature">Featured Work</h2>
+            </div>
+            <div class="row">
+               <div class="col-xs-6 col-sm-4">
+                  <picture>
+                     <source media="(max-width: 522px)" srcset="images/img-3.png">
+                     <source media="(min-width: 523px) and (max-width: 781px)" srcset="images/img-2-sm.png">
+                     <source media="(min-width: 782px)" srcset="images/img-1.png">
+                     <img src="images/img-1-sm.png" alt="project1">
+                  </picture>
+                  <p><a data-toggle="modal" data-target="#myModal1">Appify</a></p>
+                  <a href="https://github.com/canaantt">https://github.com/udacity/Appify/</a>
+                  <div class="modal fade" id="myModal1" role="dialog">
+                     <div class="modal-dialog">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h4>Image 1</h4>
+                           </div>
+                           <div class="modal-body">
+                              <img src="images/img-1.png" alt="project1">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xs-6 col-sm-4">
+                  <picture>
+                     <source media="(max-width: 522px)" srcset="images/img-1.png">
+                     <source media="(min-width: 523px) and (max-width: 781px)" srcset="images/img-3-sm.png">
+                     <source media="(min-width: 782px)" srcset="images/img-2.png">
+                     <img src="images/img-2-sm.png" alt="project2">
+                  </picture>
+                  <p><a data-toggle="modal" data-target="#myModal2">Sunflower</a></p>
+                  <a href="https://github.com/canaantt">https://github.com/udacity/Sunflower/</a>
+                  <div class="modal fade" id="myModal2" role="dialog">
+                     <div class="modal-dialog">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h4>Image 2</h4>
+                           </div>
+                           <div class="modal-body">
+                              <img src="images/img-2.png" alt="project2">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xs-6 col-sm-4">
+                  <picture>
+                     <source media="(max-width: 522px)" srcset="images/img-2.png">
+                     <source media="(min-width: 523px) and (max-width: 781px)" srcset="images/img-1-sm.png">
+                     <source media="(min-width: 782px)" srcset="images/img-3.png">
+                     <img src="images/img-3-sm.png" alt="project3">
+                  </picture>
+                  <p><a data-toggle="modal" data-target="#myModal3">Bokeh</a></p>
+                  <a href="https://github.com/canaantt">https://github.com/udacity/Bokeh/</a>
+                  <div class="modal fade" id="myModal3" role="dialog">
+                     <div class="modal-dialog">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h4>Image 3</h4>
+                           </div>
+                           <div class="modal-body">
+                              <img src="images/img-3.png" alt="project3">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </article>
+      </main>
+   </body>
+</html>

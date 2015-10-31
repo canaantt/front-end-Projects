@@ -1,0 +1,128 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+/* Header */
+h1, h3 {
+  font-weight: 100;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 40px;
+  color: #bcbbbb;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+#name {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+hr  {
+    display: block;
+    size: "4";
+    color: gray;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #BCBBBB;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+hr.soften  {
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+  border: 0;
+}
+
+/* Section */
+.entrance {
+  width: 100%;
+  max-width: 1000px
+}
+
+#feature {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.modal  {
+  width: 70%;
+  height: 70%;
+  text-align: center;
+}
+
+/* Articles */
+img {
+  width: 95%;
+  height: 80%;
+  max-width: 333px;
+  max-height: 333px;
+}
+
+p a {
+  text-align: center;
+  color: #747704;
+  margin: 0 auto;
+  font-size: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+a {
+  font-size: 15px; 
+  font-weight: 100;
+}
+
+a:link  {
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 522px) {
+  .col-sm-4 {
+    width: 100%;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .col-sm-4 p {
+    width: 100%;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+
+@media only screen and (min-width: 523px) and (max-width: 780px) {
+  .col-sm-4 {
+    width: 50%;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .container-fluid {
+    max-width: 1000px;
+  }
+
+  .row {
+    max-width: 1000px;
+  }
+
+  hr {
+    max-width: 1000px;
+  }
+}
