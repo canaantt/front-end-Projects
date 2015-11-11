@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -8,7 +8,7 @@ var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.speed = Math.pow(-1, Math.floor(Math.random()*100))*Math.random()*250;
 };
 
 // Update the enemy's position, required method for game
@@ -18,6 +18,8 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
+    if(this.x >= 450) this.x = 0;
+    else if(this.x <= -100) this.x = 450;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -42,7 +44,7 @@ var Player = function(x, y) {
 
 // Update the player's position, required method for game
 Player.prototype.update = function(dt) {
-    
+
 };
 
 Player.prototype.render = function() {
@@ -64,16 +66,18 @@ Player.prototype.handleInput = function(input) {
             this.y = this.y + 80;
             break;
     }
-    if(this.y <= -40 ){
+    if(this.y <= -40 || this.y >= 400){
         console.log(this.x, this.y);
         this.reset();
     }
+    this.checkCollisions();
 }
 
-Player.prototype.collide = function() {
-    all.Enemies.forEach(function(enemy) {
-        if(enemy.x > (this.x - 80) && (enemy.y > (this.y - 80) || (enemy.y <= (this.y + 80))))
-            reset();
+function checkCollisions() {
+    allEnemies.forEach(function(enemy) {
+        if((enemy.y > player.y - 70) && (enemy.y < player.y + 70) &&
+            (enemy.x > (player.x - 30)) && (enemy.x < (player.x + 30)))
+            player.reset();
     });
 }
 
@@ -88,10 +92,10 @@ Player.prototype.reset = function() {
 
 var player = new Player(200, 380);
 var allEnemies = [
-          new Enemy(0, 60, 200),
-          new Enemy(400, 140, -200),
-          new Enemy(0, 220, 100),
-          new Enemy(400, 300, -100)      
+          new Enemy(0, 60),
+          new Enemy(400, 140),
+          new Enemy(0, 220),
+          new Enemy(400, 300)      
     ];
 
 
