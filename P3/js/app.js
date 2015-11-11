@@ -8,6 +8,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    //Enemy could move toward both directions
     this.speed = Math.pow(-1, Math.floor(Math.random()*100))*Math.random()*250;
 };
 
@@ -40,11 +41,16 @@ var Player = function(x, y) {
     this.x = x;
     this.y = y;
     if(this.y > 380) this.y = 380;
+    if(this.x < 60 || this.x > 340) this.reset();
+    this.score = 0;
 };
 
 // Update the player's position, required method for game
-Player.prototype.update = function(dt) {
-
+Player.prototype.update = function() {
+    if(this.y < -60){
+        this.scoring();
+        this.reset();
+     }   
 };
 
 Player.prototype.render = function() {
@@ -66,12 +72,17 @@ Player.prototype.handleInput = function(input) {
             this.y = this.y + 80;
             break;
     }
-    if(this.y <= -40 || this.y >= 400){
+    if(this.y <= -20 || this.y >= 400){
         console.log(this.x, this.y);
         this.reset();
     }
-    this.checkCollisions();
 }
+
+Player.prototype.scoring = function(){
+        this.score = this.score + 1; 
+        console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
+}
+
 
 function checkCollisions() {
     allEnemies.forEach(function(enemy) {
@@ -86,6 +97,8 @@ Player.prototype.reset = function() {
     this.y = 380;
     this.render();
 }
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -97,7 +110,6 @@ var allEnemies = [
           new Enemy(0, 220),
           new Enemy(400, 300)      
     ];
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
