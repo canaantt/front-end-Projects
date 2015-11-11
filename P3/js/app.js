@@ -43,14 +43,12 @@ var Player = function(x, y) {
     if(this.y > 380) this.y = 380;
     if(this.x < 60 || this.x > 340) this.reset();
     this.score = 0;
+    this.executed = false;
 };
 
 // Update the player's position, required method for game
 Player.prototype.update = function() {
-    if(this.y < -60){
-        this.scoring();
-        this.reset();
-     }   
+    if(this.y === -20) this.scoring();      
 };
 
 Player.prototype.render = function() {
@@ -60,41 +58,56 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(input) {
     switch(input) {
         case 'right': 
-            this.x = this.x + 80;
+            if(this.x < 360)
+                this.x = this.x + 93;
             break;
         case 'left': 
-            this.x = this.x - 80;
+            if(this.x > 40)
+                this.x = this.x - 93;
             break;
-        case 'up': 
-            this.y = this.y - 80;
+        case 'up':
+            if(this.y > 40) 
+                this.y = this.y - 80;
+            else
+                this.reset();
             break;
         case 'down': 
-            this.y = this.y + 80;
+            if(this.y < 380)    
+                this.y = this.y + 80;
             break;
     }
-    if(this.y <= -20 || this.y >= 400){
-        console.log(this.x, this.y);
-        this.reset();
-    }
 }
 
-Player.prototype.scoring = function(){
-        this.score = this.score + 1; 
-        console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
+Player.prototype.scoring = function() {
+        if (!this.executed) {
+            this.score = this.score + 1; 
+            console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
+            this.executed = true;
+        }
 }
 
+Player.prototype.losing = function() {
+        if (!this.executed) {
+            this.score = this.score - 1; 
+            console.log("Lose! Score: " + this.score + " coordinates:" + this.x + this.y);
+            this.executed = true;
+        }
+}
 
 function checkCollisions() {
     allEnemies.forEach(function(enemy) {
         if((enemy.y > player.y - 70) && (enemy.y < player.y + 70) &&
-            (enemy.x > (player.x - 30)) && (enemy.x < (player.x + 30)))
-            player.reset();
+            (enemy.x > (player.x - 30)) && (enemy.x < (player.x + 30))) {
+               player.losing();
+               player.reset();
+            }
     });
 }
 
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = 380;
+    this.executed = false;
     this.render();
 }
 
