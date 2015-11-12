@@ -109,7 +109,7 @@ Player.prototype.reset = function() {
     this.y = 380;
     this.executed = false;
     this.render();
-}
+}:
 
 
 // Now instantiate your objects.
