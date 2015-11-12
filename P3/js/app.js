@@ -76,7 +76,7 @@ Player.prototype.handleInput = function(input) {
                 this.y = this.y + 80;
             break;
     }
-}
+};
 
 Player.prototype.scoring = function() {
         if (!this.executed) {
@@ -84,7 +84,7 @@ Player.prototype.scoring = function() {
             console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
             this.executed = true;
         }
-}
+};
 
 Player.prototype.losing = function() {
         if (!this.executed) {
@@ -92,7 +92,7 @@ Player.prototype.losing = function() {
             console.log("Lose! Score: " + this.score + " coordinates:" + this.x + this.y);
             this.executed = true;
         }
-}
+};
 
 function checkCollisions() {
     allEnemies.forEach(function(enemy) {
