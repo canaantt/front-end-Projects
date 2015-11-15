@@ -41,18 +41,11 @@ var Player = function(x, y) {
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
-    if(this.y > 380) this.y = 380;
-    if(this.x < 60 || this.x > 340) this.reset();
     this.score = 0;
-    this.executed = false;
 };
 
 // Update the player's position, required method for game
 Player.prototype.update = function() {
-    if(this.y === -15) {
-        this.scoring();
-        setTimeout(this.reset(), 20000);
-    }                  
 };
 
 Player.prototype.render = function() {
@@ -60,50 +53,43 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(input) {
-    switch(input) {
-        case 'right': 
-            if(this.x < 360)
-                this.x = this.x + 93;
-            break;
-        case 'left': 
-            if(this.x > 40)
-                this.x = this.x - 93;
-            break;
-        case 'up':
-            if(this.y > 40) 
-                this.y = this.y - 83;
-            else
-                this.reset();
-            break;
-        case 'down': 
-            if(this.y < 380)    
-                this.y = this.y + 83;
-            break;
+    if (input == 'right' && this.x < 400) {
+        this.x = this.x + 100;
+    }
+    if (input == 'left' && this.x > 0) {
+        this.x = this.x - 100;
+    }
+    if (input == 'up' && this.y > 0) {
+        this.y = this.y - 83;
+    }
+    if (input == 'down' && this.y < 400) {
+        this.y = this.y + 83;
+    } 
+    // If player reaches the water
+    if (this.y == -15)   {
+            this.scoring();
+            setTimeout(reset, 1500);
     }
 };
 
 Player.prototype.scoring = function() {
-    if (!this.executed) {
-        this.score = this.score + 1; 
-        console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
-        this.executed = true;
-    }
+    this.score = this.score + 1; 
+    console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
 };
 
 Player.prototype.losing = function() {
-        if (!this.executed) {
-            this.score = this.score - 1; 
-            console.log("Lose! Score: " + this.score + " coordinates:" + this.x + this.y);
-            this.executed = true;
-        }
+    this.score = this.score - 1; 
+    console.log("Lose! Score: " + this.score + " coordinates:" + this.x + this.y);
 };
 
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = 400;
-    this.executed = false;
 };
 
+var reset = function() {
+    player.reset();
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
