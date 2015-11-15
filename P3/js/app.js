@@ -1,3 +1,4 @@
+'use strict';
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
@@ -48,7 +49,10 @@ var Player = function(x, y) {
 
 // Update the player's position, required method for game
 Player.prototype.update = function() {
-    if(this.y === -20) this.scoring();      
+    if(this.y === -15) {
+        this.scoring();
+        setTimeout(this.reset(), 20000);
+    }                  
 };
 
 Player.prototype.render = function() {
@@ -67,24 +71,24 @@ Player.prototype.handleInput = function(input) {
             break;
         case 'up':
             if(this.y > 40) 
-                this.y = this.y - 80;
+                this.y = this.y - 83;
             else
                 this.reset();
             break;
         case 'down': 
             if(this.y < 380)    
-                this.y = this.y + 80;
+                this.y = this.y + 83;
             break;
     }
-}
+};
 
 Player.prototype.scoring = function() {
-        if (!this.executed) {
-            this.score = this.score + 1; 
-            console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
-            this.executed = true;
-        }
-}
+    if (!this.executed) {
+        this.score = this.score + 1; 
+        console.log("Win! Score: " + this.score + " coordinates:" + this.x + this.y);
+        this.executed = true;
+    }
+};
 
 Player.prototype.losing = function() {
         if (!this.executed) {
@@ -92,24 +96,14 @@ Player.prototype.losing = function() {
             console.log("Lose! Score: " + this.score + " coordinates:" + this.x + this.y);
             this.executed = true;
         }
-}
+};
 
-function checkCollisions() {
-    allEnemies.forEach(function(enemy) {
-        if((enemy.y > player.y - 70) && (enemy.y < player.y + 70) &&
-            (enemy.x > (player.x - 30)) && (enemy.x < (player.x + 30))) {
-               player.losing();
-               player.reset();
-            }
-    });
-}
 
 Player.prototype.reset = function() {
     this.x = 200;
-    this.y = 380;
+    this.y = 400;
     this.executed = false;
-    this.render();
-}
+};
 
 
 // Now instantiate your objects.
