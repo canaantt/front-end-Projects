@@ -98,13 +98,11 @@ Player.prototype.losing = function() {
         }
 };
 
-
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = 400;
     this.executed = false;
 };
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
