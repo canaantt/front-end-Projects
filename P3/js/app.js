@@ -89,7 +89,8 @@ Player.prototype.reset = function() {
 
 var reset = function() {
     player.reset();
-}
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
