@@ -24,13 +24,13 @@ function loadData() {
         var imageTag = '<img class="bgimg" src="http://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + $address + '">';
         $body.append(imageTag);
     });
-    
+    $searchTerm = $("#city").val();
     var $api_key="56dda0abb61e8c41932df7baf8df0e5a:1:73776542";
 
-    var url="http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + $searchTerm + "&api-key=" + $api_key;
+    var url="http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + $searchTerm + "&sort=newest&api-key=" + $api_key;
     console.log("url is:" + url);
   
-    var url=url+"123";
+    //var url=url+"123";
     $.getJSON(url, function(data){
         $nytHeaderElem.text("New York Times Articles About " + $searchTerm);
         var articles = data.response.docs;
@@ -43,7 +43,19 @@ function loadData() {
         $nytHeaderElem.text("New York Times Articles Could Not Be Loaded");
     });
     
-                
+    var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + $searchTerm + "&format=json";
+    $.ajax({
+    	url: wikiUrl,
+    	dataType: "jsonp",
+    	success: function(response){
+    			 var articles = response[1];
+    			 console.log("wikipedia api response: ", articles);
+    			 articles.forEach(function(art){
+    			 	console.log('<li><a href="' + "http://en.wikipedia.org/wiki/" + art + '"' + art + '</a></li>');
+    			 	$wikiElem.append('<li><a href="' + "http://en.wikipedia.org/wiki/" + art + '">' + art + '</a></li>');
+    			 });
+    	}
+    });
 
     return false;
 };
